@@ -5,14 +5,15 @@
     <form class="form-login">            
         
           <div class="input-field">
-            <input id="email" type="email" class="validate" (input)="email = $event.target">
+            <input id="email" type="email" class="validate" (input)="setEmail($event.target)" >
             <label for="email">Email</label>                
           </div>
           <div class="input-field">
-              <input id="password" type="password" class="validate" (input)="senha = $event.target">
+              <input id="password" type="password" class="validate"  (input)="setPass($event.target)">
               <label for="password">Password</label>
           </div>
-         
+         {{email}}
+         {{pass}}
           <div class="input-field">
             <input type="submit" (click)="login" class="waves-effect waves-light btn btn-submit" value="Login">
         </div>                  

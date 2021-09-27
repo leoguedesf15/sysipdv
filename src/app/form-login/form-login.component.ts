@@ -8,14 +8,19 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, SimpleChange, Vi
 })
 export class FormLoginComponent implements OnInit,AfterViewInit {
 
-  @Input('email')email:any="";
-  @Input('senha')senha:any='';
-  constructor() { 
+email!:string;
+pass!:string;
+constructor() { 
   }
   
-  
+  setEmail(target:any){
+    this.email = target.value;
+  }
+  setPass(target:any){
+    this.pass = target.value;
+  }
   ngOnInit(): void {
- 
+    
   }
   ngAfterViewInit():void{
 
