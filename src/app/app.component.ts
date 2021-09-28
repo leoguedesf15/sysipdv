@@ -1,6 +1,6 @@
-import { AuthService } from './services/auth-service.service';
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from './services/auth/auth-service.service';
+import { Component, ViewChild, OnInit, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,19 +9,19 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'SYS-IPdv';
   mostrarMenuFlag!:boolean;
-  @ViewChild('login_container')login_container!:HTMLElement;
   constructor(private authService:AuthService,
-              private route : Router){ }
-
-  mostrarMenu(){
-    
+    private route : Router){
   }
 
-  ngOnInit(){
-    console.log(this.route.routerState.snapshot.url);
+
+  ngOnInit(){    
+    this.authService.usuarioAutenticadoEmitter.subscribe(value=>this.mostrarMenuFlag = value);
     this.authService.verificaToken().subscribe(response=>{
+      this.authService.autenticacaoUsuario(true);
       this.route.navigate(['/usuarios']);
     },error=>{
+      this.authService.autenticacaoUsuario(false);
+      this.route.navigate(['']);
     } )
   }
 

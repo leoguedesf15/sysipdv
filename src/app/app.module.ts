@@ -1,19 +1,28 @@
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { Md5 } from 'ts-md5';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormLoginComponent } from './form-login/form-login.component';
-import { LogoComponent } from './logo/logo.component';
-import { AuthService } from './services/auth-service.service';
-import { PathService } from './services/path.service';
-import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
-import { DetalheUsuarioComponent } from './usuario/detalhe-usuario/detalhe-usuario.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { AuthService } from './services/auth/auth-service.service';
+import { PathService } from './services/global/path.service';
+import { ListarUsuarioComponent } from './components/usuario/listar-usuario/listar-usuario.component';
+import { DetalheUsuarioComponent } from './components/usuario/detalhe-usuario/detalhe-usuario.component';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ListarCargoComponent } from './components/cargo/listar-cargo/listar-cargo.component';
+import { DetalheCargoComponent } from './components/cargo/detalhe-cargo/detalhe-cargo.component';
+import { ListarDepartamentoComponent } from './components/departamento/listar-departamento/listar-departamento.component';
+import { DetalheDepartamentoComponent } from './components/departamento/detalhe-departamento/detalhe-departamento.component';
+import { ListarCentroDeCustoComponent } from './components/centro-de-custo/listar-centro-de-custo/listar-centro-de-custo.component';
+import { DetalheCentroDeCustoComponent } from './components/centro-de-custo/detalhe-centro-de-custo/detalhe-centro-de-custo.component';
+import { ListaComponent } from './components/lista/lista.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +30,15 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormLoginComponent,    
     LogoComponent, 
     ListarUsuarioComponent,  
-    DetalheUsuarioComponent, NavbarComponent
+    DetalheUsuarioComponent, 
+    NavbarComponent, 
+    ListarCargoComponent, 
+    DetalheCargoComponent, 
+    ListarDepartamentoComponent, 
+    DetalheDepartamentoComponent, 
+    ListarCentroDeCustoComponent, 
+    DetalheCentroDeCustoComponent, 
+    ListaComponent, AddButtonComponent  
   ],
   imports: [
     BrowserModule,
@@ -32,6 +49,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthService,
     PathService,
     Md5

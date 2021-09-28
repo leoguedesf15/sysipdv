@@ -1,0 +1,7 @@
+.btn-floating.btn-large {
+    margin: 30px;
+    position:fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 5px 5px 15px #353535;
+}

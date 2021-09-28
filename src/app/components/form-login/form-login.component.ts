@@ -1,7 +1,6 @@
-import { ApiResponse } from './../interfaces/api-response';
+import { AuthService } from './../../services/auth/auth-service.service';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth-service.service';
 import { Router } from '@angular/router';
 
 
@@ -42,7 +41,7 @@ constructor(private authService: AuthService,
   submitForm(){
     console.log(this.formulario.get('email'));    
     this.authService.login( this.formulario.get('email').value,this.formulario.get('password').value).subscribe(result=>{
-      localStorage.setItem("Authorization",result.data.token);
+      this.authService.autenticacaoUsuario(true,result.data.token);
       this.router.navigate(['/usuarios']);
     })
   }

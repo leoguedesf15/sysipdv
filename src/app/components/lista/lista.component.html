@@ -1,0 +1,19 @@
+<table class="highlight centered">
+    <thead>
+      <tr>
+          <th *ngFor="let item of dados.headers">{{item}}</th>
+          <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let row of rows" #tr id={{row[pk]}}>
+        <td *ngFor="let key of keys">{{row[key]}}</td>
+        <td>          
+            <a class="waves-effect waves-light btn yellow btn-warning" (click)=this.actionEdita(tr.id)><i class="material-icons left">edit</i>Detalhes/Editar</a>&nbsp;
+            <a class="waves-effect waves-light btn red darken-4" (click)=this.actionDeleta(tr.id)><i class="material-icons left">delete</i>Excluir</a>
+        </td>      
+      </tr>      
+    </tbody>
+  </table>
