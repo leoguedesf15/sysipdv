@@ -2,18 +2,23 @@
     position:relative;
     top:50%;
     transform: translateY(-50%); 
-    border: 1px solid #26A69A;
-    padding:0px 20px 90px 20px;
-    border-radius:5px;
+    border: 1px solid #808080;
+    padding:0px 20px 40px 20px;
+    box-shadow: 5px 5px 15px #353535;
 }
+
 .div-logo{
     text-align: center;
+    margin:40px;
 }
 input.waves-button-input{
     color:#FFF;
     font-weight: 600;
     width: 200px;
     
+}
+.btn-large{
+    border-radius:unset;
 }
 div.input-field{
     text-align: center;

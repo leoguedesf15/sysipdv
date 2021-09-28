@@ -2,20 +2,18 @@
     <div class="div-logo">
       <logo></logo>
     </div>
-    <form class="form-login">            
+    <form class="form-login" [formGroup]="formulario">            
         
           <div class="input-field">
-            <input id="email" type="email" class="validate" (input)="setEmail($event.target)" >
+            <input id="email" type="email" class="validate" formControlName="email">
             <label for="email">Email</label>                
           </div>
           <div class="input-field">
-              <input id="password" type="password" class="validate"  (input)="setPass($event.target)">
+              <input id="password" type="password" class="validate" formControlName="password">
               <label for="password">Password</label>
           </div>
-         {{email}}
-         {{pass}}
           <div class="input-field">
-            <input type="submit" (click)="login" class="waves-effect waves-light btn btn-submit" value="Login">
+            <button href="#" [disabled]="!formValido()" (click)="submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">lock_open</i>Login</button>
         </div>                  
     </form>    
 </div>
