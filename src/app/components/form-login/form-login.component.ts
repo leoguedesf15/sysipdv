@@ -39,10 +39,17 @@ constructor(private authService: AuthService,
   }
 
   submitForm(){
-    console.log(this.formulario.get('email'));    
-    this.authService.login( this.formulario.get('email').value,this.formulario.get('password').value).subscribe(result=>{
-      this.authService.autenticacaoUsuario(true,result.data.token);
-      this.router.navigate(['/usuarios']);
-    })
+    console.log(this.formulario.get('password').value);    
+    this.authService
+                .login( this.formulario.get('email').value,this.formulario.get('password').value)
+                .subscribe(
+                  result=>{
+                            this.authService.autenticacaoUsuario(true,result.data.token);
+                            this.router.navigate(['/usuarios']);
+                          },
+                  errors=>{
+                            let result = errors.error;
+                            alert(result.message);
+                  })
   }
 }

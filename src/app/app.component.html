@@ -1,2 +1,2 @@
-<navbar *ngIf="mostrarMenuFlag == true"></navbar>
+<navbar *ngIf="mostrarMenuFlag == true" (logOff)=this.esconderMenu()></navbar>
   <router-outlet></router-outlet>
