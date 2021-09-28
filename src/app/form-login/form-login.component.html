@@ -1,20 +1,20 @@
-<div class="div-form-login" #div_form_login>
-    <div class="div-logo">
-      <logo></logo>
-    </div>
-    <form class="form-login" [formGroup]="formulario">            
-        
-          <div class="input-field">
-            <input id="email" type="email" class="validate" formControlName="email">
-            <label for="email">Email</label>                
-          </div>
-          <div class="input-field">
-              <input id="password" type="password" class="validate" formControlName="password">
-              <label for="password">Password</label>
-          </div>
-          <div class="input-field">
-            <button href="#" [disabled]="!formValido()" (click)="submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">lock_open</i>Login</button>
-        </div>                  
-    </form>    
+<div class="login-container">
+  <div class="div-form-login" #div_form_login>
+      <div class="div-logo">
+        <logo [cssClass]="logoClass"></logo>
+      </div>
+      <form class="form-login" [formGroup]="formulario">                     
+            <div class="input-field">
+              <input id="email" type="email" class="validate" formControlName="email">
+              <label for="email">Email</label>                
+            </div>
+            <div class="input-field">
+                <input id="password" type="password" class="validate" formControlName="password">
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field">
+              <button href="#" [disabled]="!formValido()" (click)="submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">lock_open</i>Login</button>
+          </div>                  
+      </form>    
+  </div>
 </div>
-

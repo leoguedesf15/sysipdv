@@ -23,3 +23,9 @@ input.waves-button-input{
 div.input-field{
     text-align: center;
 }
+.login-container{
+    height:97vh;
+    width: 40%;
+    margin: 0 auto;
+   
+}

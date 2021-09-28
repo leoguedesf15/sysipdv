@@ -2,6 +2,7 @@ import { ApiResponse } from './../interfaces/api-response';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,10 +13,11 @@ import { AuthService } from '../services/auth-service.service';
 export class FormLoginComponent implements OnInit,AfterViewInit {
 
   formulario:FormGroup;
-
+  logoClass:string ='logo';
 
 constructor(private authService: AuthService,
-            private formBuilder : FormBuilder) {
+            private formBuilder : FormBuilder,
+            private router : Router) {
 }
   
   ngOnInit(): void {
@@ -37,13 +39,11 @@ constructor(private authService: AuthService,
 
   }
 
-
-
   submitForm(){
-    console.log(this.formulario.get('email'));
-    
+    console.log(this.formulario.get('email'));    
     this.authService.login( this.formulario.get('email').value,this.formulario.get('password').value).subscribe(result=>{
       localStorage.setItem("Authorization",result.data.token);
+      this.router.navigate(['/usuarios']);
     })
   }
 }

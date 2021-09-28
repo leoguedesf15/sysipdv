@@ -13,6 +13,7 @@ import { PathService } from './services/path.service';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { DetalheUsuarioComponent } from './usuario/detalhe-usuario/detalhe-usuario.component';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CommonModule } from '@angular/common';
     FormLoginComponent,    
     LogoComponent, 
     ListarUsuarioComponent,  
-    DetalheUsuarioComponent
+    DetalheUsuarioComponent, NavbarComponent
   ],
   imports: [
     BrowserModule,
