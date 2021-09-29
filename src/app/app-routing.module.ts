@@ -10,21 +10,22 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
     {path:'', component:FormLoginComponent},
     
-    {path:'usuarios', component:ListarUsuarioComponent},
-    {path:'usuarios/:id', component: DetalheUsuarioComponent},
+    {path:'usuarios', component:ListarUsuarioComponent, canActivate:[AuthGuard]},
+    {path:'usuarios/:id', component: DetalheUsuarioComponent, canActivate:[AuthGuard]},
    
-    {path:'cargos', component:ListarCargoComponent},
-    {path:'cargos/:id', component: DetalheCargoComponent},
+    {path:'cargos', component:ListarCargoComponent, canActivate:[AuthGuard]},
+    {path:'cargos/:id', component: DetalheCargoComponent, canActivate:[AuthGuard]},
 
-    {path:'departamentos', component:ListarDepartamentoComponent},
-    {path:'departamentos/:id', component: DetalheDepartamentoComponent},
+    {path:'departamentos', component:ListarDepartamentoComponent, canActivate:[AuthGuard]},
+    {path:'departamentos/:id', component: DetalheDepartamentoComponent, canActivate:[AuthGuard]},
  
-    {path:'centros-de-custo', component:ListarCentroDeCustoComponent},
-    {path:'centros-de-custo/:id', component: DetalheCentroDeCustoComponent}, 
+    {path:'centros-de-custo', component:ListarCentroDeCustoComponent, canActivate:[AuthGuard]},
+    {path:'centros-de-custo/:id', component: DetalheCentroDeCustoComponent, canActivate:[AuthGuard]}, 
 
 ];
 

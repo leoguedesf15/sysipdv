@@ -22,8 +22,7 @@ export class NavbarComponent implements OnInit {
     
   }
   logoff(){
-    this.authService.logoff();
-    this.router.navigate(['']);
+    this.authService.autenticacaoUsuario(false);
     this.evento_logoff.emit(true);
   }
 

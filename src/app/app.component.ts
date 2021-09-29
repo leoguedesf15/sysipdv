@@ -16,15 +16,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){    
     this.authService.usuarioAutenticadoEmitter.subscribe(value=>this.mostrarMenuFlag = value);
-    this.authService.verificaToken().subscribe(response=>{
-      this.authService.autenticacaoUsuario(true);
-      this.mostrarMenu();
-      this.route.navigate(['/usuarios']);
-    },error=>{
-      this.authService.autenticacaoUsuario(false);
-      this.esconderMenu();
-      this.route.navigate(['']);
-    } )
+ 
   }
   mostrarMenu(){
     this.mostrarMenuFlag=true;

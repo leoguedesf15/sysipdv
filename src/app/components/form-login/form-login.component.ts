@@ -32,7 +32,7 @@ constructor(private authService: AuthService,
     console.log(this.formulario);
   }
   formValido(){
-    return this.formulario.get('email').valid && this.formulario.get("password").valid;
+    return this.formulario.get('email').valid && this.formulario.get("password").valid; 
   }
   ngAfterViewInit():void{
 
