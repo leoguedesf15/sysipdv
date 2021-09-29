@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap');
+
 body{
     background-color: #EEEEEE;
+}
+.container{
+    margin-top:15px;
+    margin-bottom:15px;
+    padding:15px;
+    padding:0px 20px 40px 20px;
+    border: 1px solid #808080;
+    box-shadow: 5px 5px 15px #353535;
+    background-color:#FFF;
+    text-align: center;
+}
+
+
+h1,h2,h3,h4,h5,h6,th{
+    font-family: 'Comfortaa', cursive;
 }

@@ -14,4 +14,7 @@ export class UsuarioService {
   get(){
     return this.http.get<ApiResponse<Usuario[]>>(`${this.path.get('api')}/usuario`);
   }
+  detail(id){
+    return this.http.get<ApiResponse<Usuario>>(`${this.path.get('api')}/usuario/${id}`);
+  }
 }

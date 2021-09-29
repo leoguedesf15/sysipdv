@@ -1,0 +1,29 @@
+.div-label-nascimento{
+   text-align:left;
+}
+select{
+    display: inline-block;
+    border-bottom: 1px solid #9E9E9E;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+select:focus{
+    outline: none;
+}
+.pass-eye{
+    color: #9E9E9E;
+    position: absolute;
+    padding: 0;
+    margin: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+}
+.pass-eye:hover{
+    cursor: pointer;
+    color:#555;
+}
+.pass-eye.active{
+    color: #2BBBAD;
+}
