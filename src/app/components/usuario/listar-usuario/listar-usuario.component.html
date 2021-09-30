@@ -3,6 +3,8 @@
             [dados]=this.dados 
             (cliqueEdita)=editar($event) 
             (cliqueDeleta)=deletar($event)></lista>
+
+    <app-not-found-page *ngIf="exibe404"></app-not-found-page>        
 </div>
 <add-button (addButton)=adicionar($event) ></add-button>
 

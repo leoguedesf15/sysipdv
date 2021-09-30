@@ -32,8 +32,7 @@ export class DetalheUsuarioComponent implements OnInit {
             .detail(__values.id)
             .subscribe(
               result=>{               
-                this.usuario = result.data[0];
-                
+                this.usuario = result.data[0];                
                   this.formulario = this.formBuilder.group({
                                       id_usuario:[this.usuario.id_usuario,null],
                                       nome:[this.usuario.nome, [Validators.required,Validators.maxLength(30)]],
@@ -46,8 +45,6 @@ export class DetalheUsuarioComponent implements OnInit {
                                       departamento:[this.usuario.departamento,[Validators.required]]
                                     });
                   this.exibeFormulario = true; 
-
-
               })
 
     })

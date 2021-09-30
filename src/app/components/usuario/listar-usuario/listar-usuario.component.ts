@@ -15,6 +15,7 @@ export class ListarUsuarioComponent implements OnInit {
 
   dados:Lista<Usuario>;
   exibeDados:boolean;
+  exibe404:boolean;
   
   constructor(private usuarioService : UsuarioService,
               private router : Router) { 
@@ -33,6 +34,12 @@ export class ListarUsuarioComponent implements OnInit {
       }
         console.log(this.dados)
         this.exibeDados=true;
+      },
+      errors=>{
+        if(errors.status == 404){
+          this.exibeDados = false;
+          this.exibe404 = true;
+        }
       }
       )
       
@@ -42,7 +49,19 @@ export class ListarUsuarioComponent implements OnInit {
     this.router.navigate(['usuarios',id])
   }
   deletar(id){
-    alert('deletar '+id);
+    this.usuarioService.delete(id).subscribe(result=>{
+      alert('Dados do usuário '+result.data[0].nome+' removidos com sucesso!') 
+      this.usuarioService.get().subscribe(result=>{
+        this.dados.data = result.data
+        this.reloadComponent(); 
+      },errors=>{
+        if(errors.status == 404){
+          this.exibeDados = false;
+          this.exibe404 = true;
+        }
+      })         
+    }
+     )
   }
   adicionar(event){
     alert('adicionar')
@@ -50,5 +69,11 @@ export class ListarUsuarioComponent implements OnInit {
   getDados(){
     return this.dados;
   }
+
+  reloadComponent(){
+    this.router.navigateByUrl('/Dummy',{skipLocationChange:true});
+    this.router.navigate(['usuarios']);
+  }
+
 
 }

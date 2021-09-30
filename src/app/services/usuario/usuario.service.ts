@@ -20,4 +20,7 @@ export class UsuarioService {
   update(id,form){    
     return this.http.put<ApiResponse<[]>>(`${this.path.get('api')}/usuario/${id}`,JSON.parse(form));
   }
+  delete(id){
+    return this.http.delete<ApiResponse<Usuario>>(`${this.path.get('api')}/usuario/${id}`);
+  }
 }

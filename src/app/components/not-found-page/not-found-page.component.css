@@ -1,0 +1,9 @@
+h3{
+    color:#888;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);    
+}
+div{
+    height: 50vh;
+}

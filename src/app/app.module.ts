@@ -25,6 +25,7 @@ import { DetalheCentroDeCustoComponent } from './components/centro-de-custo/deta
 import { ListaComponent } from './components/lista/lista.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usuario.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usu
     DetalheCentroDeCustoComponent, 
     ListaComponent, 
     AddButtonComponent, 
-    FormUsuarioComponent
+    FormUsuarioComponent, NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
