@@ -1,3 +1,4 @@
+import { BodyTransformerInterceptor } from './interceptors/body-transformer.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { Md5 } from 'ts-md5';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -52,7 +53,9 @@ import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usu
     FormsModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BodyTransformerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    
     AuthService,
     PathService,
     Md5

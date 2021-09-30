@@ -1,3 +1,8 @@
 <div class="container">
-    <form-usuario *ngIf=this.exibeFormulario [title]=this.title></form-usuario>
+    <form-usuario *ngIf=this.exibeFormulario 
+                    [exibeSenha]=this.exibeSenha
+                    [formUsuario]=this.formulario 
+                    [title]=this.title
+                    (formSubmit)=this.save($event)
+                    ></form-usuario>
 </div>

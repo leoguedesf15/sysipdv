@@ -20,7 +20,7 @@ export class AuthService {
 
   }
   verificaToken(){
-    return this.http.post<ApiResponse<void>>(`${this.path.get('api')}/validar-token`,`token=${localStorage.getItem('Authorization')}`)
+    return this.http.post<ApiResponse<void>>(`${this.path.get('api')}/validar-token`,{token:localStorage.getItem('Authorization')})
   }
  
   usuarioEstaAutenticado(){
@@ -43,6 +43,7 @@ export class AuthService {
   login(email,senha){
     let md5 = new Md5();
     let encryptedPassword = md5.appendStr(senha).end()
-    return this.http.post<ApiResponse<{token:string}>>(`${this.path.get('api')}/login`,`email=${email}&senha=${encryptedPassword}`)
+    let body = {"email":email,"senha":encryptedPassword}
+    return this.http.post<ApiResponse<{token:string}>>(`${this.path.get('api')}/login`,body)
   }
 }

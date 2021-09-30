@@ -1,51 +1,47 @@
     <h2>{{title}}</h2>
-    <div class="row">
-        <form class="col s12">
+    <div class="row" *ngIf="this.formGroup != null">
+        <form class="col s12" [formGroup]="formGroup">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="nome" type="text" class="validate">
-                    <label for="first_name">Nome</label>
+                    <input id="nome" type="text" class="validate" #inputNome formControlName="nome">
+                    <label for="nome"[ngClass]="{'active': inputNome.value!=null}">Nome *</label>
                 </div>        
             </div>     
             <div class="row">
             <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <input id="email" type="email" class="validate" #inputEmail formControlName="email">
+                <label for="email" [ngClass]="{'active': inputEmail.value!=null}">Email *</label>
             </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <label for="password">Senha</label>
+                    <label for="password" [ngClass]="{'active': inputSenha.value!=null}">Senha *</label>
                     <i class="material-icons pass-eye" (click)=this.seePassword($event.target,passInput)>remove_red_eye</i>
-                    <input id="password" #passInput type="password" class="validate">
+                    <input id="password" #passInput type="password" #inputSenha  class="validate"   formControlName="senha">
 
                 </div>
                 <div class="col s6 div-label-nascimento">
-                    <label for="nascimento">Data de nascimento</label>
-                    <input type="date" id="nascimento" class="datepicker">
+                    <label for="nascimento">Data de nascimento *</label>
+                    <input type="date" id="nascimento" class="datepicker" formControlName="dtnascimento">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <select name="cargo" id="cargo">
-                      <option value="" disabled selected>Escolha o cargo</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                    <select name="cargo" id="cargo" #selectCargo formControlName="id_cargo_fk">
+                        <option value="" disabled selected>Escolha o cargo *</option>
+                        <option *ngFor="let option of cargos" [value]="option.id_cargo" [selected]="option.id_cargo == selectCargo.value">{{option.nome_cargo}}</option>
                     </select>                  
                   </div>
                   <div class="input-field col s6">
-                    <select name="departamento" id="departamento">
-                      <option value="" disabled selected>Escolha o departamento</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                    <select name="departamento" id="departamento" #selectDepartamento formControlName="id_departamento_fk">
+                      <option value="" disabled selected>Escolha o departamento *</option>
+                      <option *ngFor="let option of departamentos" [value]="option.id_departamento" [selected]="option.id_departamento == selectDepartamento.value">{{option.nome_departamento}}</option>
                     </select>                   
                   </div>
             </div>
                 <div class="row">
                     <div class="col s12">
-                        <button href="#" [disabled]="!formValido()" (click)="submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">save</i>Salvar</button>
+                        <button href="#" [disabled]=!this.formValido() (click)="this.submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">save</i>Salvar</button>
                     </div>
                 </div>  
         </form>

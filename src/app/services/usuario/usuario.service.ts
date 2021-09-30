@@ -17,4 +17,7 @@ export class UsuarioService {
   detail(id){
     return this.http.get<ApiResponse<Usuario>>(`${this.path.get('api')}/usuario/${id}`);
   }
+  update(id,form){    
+    return this.http.put<ApiResponse<[]>>(`${this.path.get('api')}/usuario/${id}`,JSON.parse(form));
+  }
 }
