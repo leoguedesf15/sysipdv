@@ -44,9 +44,7 @@ export class FormUsuarioComponent implements OnInit,AfterViewInit {
       this.formGroup.get('senha').disable();
     }
   }
-  aplicarEstiloValidacao(status,target:AbstractControl){
 
-  }
   seePassword(self,target:HTMLInputElement){
     if(self.classList.contains('active')){
       target.type = "password";

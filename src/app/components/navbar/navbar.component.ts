@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
     
   }
   logoff(){
+    alert('caiu aqui')
     this.authService.autenticacaoUsuario(false);
     this.evento_logoff.emit(true);
   }

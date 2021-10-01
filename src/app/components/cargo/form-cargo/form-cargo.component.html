@@ -1,0 +1,23 @@
+<h2>{{title}}</h2>
+<div class="row" *ngIf="this.formGroup != null">
+    <form class="col s12" [formGroup]="formGroup">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="nome_cargo" type="text" class="validate" #inputNome formControlName="nome_cargo">
+                <label for="nome_cargo"[ngClass]="{'active': inputNome.value!=null}">Nome do Cargo *</label>
+            </div>        
+        </div>     
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="descricao" type="text" class="validate" #inputDesc formControlName="descricao">
+                <label for="descricao" [ngClass]="{'active': inputDesc.value!=null}">Descrição do cargo *</label>
+            </div>
+        </div>
+        
+            <div class="row">
+                <div class="col s12">
+                    <button href="#" [disabled]=!this.formValido() (click)="this.submitForm()"  class="waves-effect waves-light btn-large btn-submit"><i class="material-icons left">save</i>Salvar</button>
+                </div>
+            </div>  
+    </form>
+</div>

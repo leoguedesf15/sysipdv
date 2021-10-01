@@ -37,7 +37,7 @@ export class DetalheUsuarioComponent implements OnInit {
                                       id_usuario:[this.usuario.id_usuario,null],
                                       nome:[this.usuario.nome, [Validators.required,Validators.maxLength(30)]],
                                       email:[this.usuario.email,[Validators.email, Validators.required]],
-                                      senha:[null,null],
+                                      senha:["senha protegida por hash MD5",null],
                                       dtnascimento:[this.usuario.dtnascimento,[Validators.required]],
                                       cargo:[this.usuario.cargo,[Validators.required]],   
                                       id_cargo_fk:[this.usuario.id_cargo_fk,[Validators.required]],

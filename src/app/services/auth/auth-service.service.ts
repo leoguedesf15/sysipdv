@@ -23,12 +23,7 @@ export class AuthService {
     return this.http.post<ApiResponse<void>>(`${this.path.get('api')}/validar-token`,{token:localStorage.getItem('Authorization')})
   }
  
-  usuarioEstaAutenticado(){
-    this.verificaToken().subscribe(result=>{return;},errors=>{
-                                                                this.autenticacaoUsuario(false)                                                                
-                                                              })
-    return this.usuarioAutenticado;
-  }
+
   autenticacaoUsuario(bool, token?){
     if(token) localStorage.setItem("Authorization",token);
     this.usuarioAutenticado = bool;

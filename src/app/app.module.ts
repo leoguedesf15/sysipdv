@@ -26,6 +26,10 @@ import { ListaComponent } from './components/lista/lista.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usuario.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { CriarUsuarioComponent } from './components/usuario/criar-usuario/criar-usuario.component';
+import { FormCargoComponent } from './components/cargo/form-cargo/form-cargo.component';
+import { ReloadComponent } from './components/reload/reload.component';
+import { CriarCargoComponent } from './components/cargo/criar-cargo/criar-cargo.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,7 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
     DetalheCentroDeCustoComponent, 
     ListaComponent, 
     AddButtonComponent, 
-    FormUsuarioComponent, NotFoundPageComponent
+    FormUsuarioComponent, NotFoundPageComponent, CriarUsuarioComponent, FormCargoComponent, ReloadComponent, CriarCargoComponent
   ],
   imports: [
     BrowserModule,

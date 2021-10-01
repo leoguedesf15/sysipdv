@@ -1,4 +1,9 @@
+import { CargoService } from 'src/app/services/cargo/cargo.service';
+import { UsuarioService } from './../../../services/usuario/usuario.service';
+import { Cargo } from './../../../interfaces/cargo';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalhe-cargo',
@@ -6,10 +11,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalhe-cargo.component.css']
 })
 export class DetalheCargoComponent implements OnInit {
-
-  constructor() { }
+  title:string ='Editar Cargo';
+  formulario : FormGroup;
+  cargo : Cargo;
+  exibeFormulario:boolean;
+  exibeSenha = false;
+  constructor(private activeRoute : ActivatedRoute,
+              private router : Router,
+              private formBuilder : FormBuilder,
+              private cargoService : CargoService) { }
 
   ngOnInit(): void {
+    
+    this.activeRoute.params.subscribe(__values=>{
+      this.cargoService
+            .detail(__values.id)
+            .subscribe(
+              result=>{               
+                this.cargo = result.data[0];                
+                  this.formulario = this.formBuilder.group({
+                                      id_usuario:[this.cargo.id_cargo,null],
+                                      nome_cargo:[this.cargo.nome_cargo, [Validators.required,Validators.maxLength(30)]],
+                                      descricao:[this.cargo.descricao,[Validators.maxLength(30), Validators.required]],
+                                    });
+                  this.exibeFormulario = true; 
+              })
+
+    })
+  }
+
+  save(form){
+    let obj=JSON.parse(form);
+    this.cargoService.update(obj.id_usuario,form).subscribe(result=>{
+        alert(result.message);
+        this.router.navigate(['cargos'])
+    }, error=>console.log(error));
+
+  }
+
+  
+  
+  isNull(value){
+    if(value) return true;
+    else return false;
   }
 
 }

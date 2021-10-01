@@ -3,7 +3,7 @@ import { AppComponent } from './../../../app.component';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
 import { Usuario } from './../../../interfaces/usuario';
 import { Lista } from './../../../interfaces/lista';
-import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { query } from '@angular/animations';
 
 @Component({
@@ -18,7 +18,8 @@ export class ListarUsuarioComponent implements OnInit {
   exibe404:boolean;
   
   constructor(private usuarioService : UsuarioService,
-              private router : Router) { 
+              private router : Router,
+              private changeDetectorRef: ChangeDetectorRef) { 
     this.exibeDados = false
   }
   
@@ -51,29 +52,21 @@ export class ListarUsuarioComponent implements OnInit {
   deletar(id){
     this.usuarioService.delete(id).subscribe(result=>{
       alert('Dados do usuário '+result.data[0].nome+' removidos com sucesso!') 
-      this.usuarioService.get().subscribe(result=>{
-        this.dados.data = result.data
-        this.reloadComponent(); 
-      },errors=>{
-        if(errors.status == 404){
-          this.exibeDados = false;
-          this.exibe404 = true;
-        }
-      })         
+      this.reloadComponent();         
     }
      )
   }
   adicionar(event){
-    alert('adicionar')
+    this.router.navigate(['/criar-cargo'])
   }
   getDados(){
     return this.dados;
   }
 
   reloadComponent(){
-    this.router.navigateByUrl('/Dummy',{skipLocationChange:true});
-    this.router.navigate(['usuarios']);
-  }
+    this.router.navigate(['fake-reload'],{queryParams: {redirect:"usuarios"}});
+   
+  } 
 
 
 }
