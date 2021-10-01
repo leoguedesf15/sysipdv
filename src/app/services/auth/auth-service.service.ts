@@ -31,6 +31,7 @@ export class AuthService {
     if(!bool){
       localStorage.removeItem("Authorization");
       this.router.navigate(['']);
+      alert('Sua sessão expirou! Favor logar novamente!');
     }  
       
   }

@@ -30,6 +30,10 @@ import { CriarUsuarioComponent } from './components/usuario/criar-usuario/criar-
 import { FormCargoComponent } from './components/cargo/form-cargo/form-cargo.component';
 import { ReloadComponent } from './components/reload/reload.component';
 import { CriarCargoComponent } from './components/cargo/criar-cargo/criar-cargo.component';
+import { FormCentroDeCustoComponent } from './components/centro-de-custo/form-centro-de-custo/form-centro-de-custo.component';
+import { CriarCentroDeCustoComponent } from './components/centro-de-custo/criar-centro-de-custo/criar-centro-de-custo.component';
+import { CriarDepartamentoComponent } from './components/departamento/criar-departamento/criar-departamento.component';
+import { FormDepartamentoComponent } from './components/departamento/form-departamento/form-departamento.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,7 @@ import { CriarCargoComponent } from './components/cargo/criar-cargo/criar-cargo.
     DetalheCentroDeCustoComponent, 
     ListaComponent, 
     AddButtonComponent, 
-    FormUsuarioComponent, NotFoundPageComponent, CriarUsuarioComponent, FormCargoComponent, ReloadComponent, CriarCargoComponent
+    FormUsuarioComponent, NotFoundPageComponent, CriarUsuarioComponent, FormCargoComponent, ReloadComponent, CriarCargoComponent, FormCentroDeCustoComponent, CriarCentroDeCustoComponent, CriarDepartamentoComponent, FormDepartamentoComponent
   ],
   imports: [
     BrowserModule,

@@ -15,9 +15,10 @@ export class ListaComponent implements OnInit{
   pipes:string[];
   keys:string[];
   pk:string;
+  @Input('exibeAcoes')exibeAcoes : boolean;
   @Output('cliqueEdita') cliqueEdita:EventEmitter<string>;
   @Output('cliqueDeleta') cliqueDeleta:EventEmitter<string>;
-  constructor() { 
+  constructor() {   
     this.cliqueEdita = new EventEmitter<string>();
     this.cliqueDeleta = new EventEmitter<string>();
     

@@ -1,1 +1,11 @@
-<p>detalhe-departamento works!</p>
+<div class="container">
+    <form-departamento *ngIf=this.exibeFormulario 
+                    [exibeSenha]=this.exibeSenha
+                    [formDepartamento]=this.formulario 
+                    [title]=this.title
+                    (formSubmit)=this.save($event)
+                    ></form-departamento>
+    <lista *ngIf=this.exibeFormulario 
+            [dados]=this.departamentos 
+           ></lista>
+</div>

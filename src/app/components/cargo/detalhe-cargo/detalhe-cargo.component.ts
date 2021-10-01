@@ -30,7 +30,7 @@ export class DetalheCargoComponent implements OnInit {
               result=>{               
                 this.cargo = result.data[0];                
                   this.formulario = this.formBuilder.group({
-                                      id_usuario:[this.cargo.id_cargo,null],
+                                      id_cargo:[this.cargo.id_cargo,null],
                                       nome_cargo:[this.cargo.nome_cargo, [Validators.required,Validators.maxLength(30)]],
                                       descricao:[this.cargo.descricao,[Validators.maxLength(30), Validators.required]],
                                     });
@@ -42,7 +42,7 @@ export class DetalheCargoComponent implements OnInit {
 
   save(form){
     let obj=JSON.parse(form);
-    this.cargoService.update(obj.id_usuario,form).subscribe(result=>{
+    this.cargoService.update(obj.id_cargo,form).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['cargos'])
     }, error=>console.log(error));

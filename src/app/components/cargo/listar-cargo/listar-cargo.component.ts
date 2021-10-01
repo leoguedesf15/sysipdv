@@ -16,11 +16,12 @@ export class ListarCargoComponent implements OnInit {
   dados:Lista<Cargo>;
   exibeDados:boolean;
   exibe404:boolean;
-  
+  exibeAcoes:boolean;
   constructor(private cargoService : CargoService,
               private router : Router,
               private authService : AuthService) { 
-    this.exibeDados = false
+    this.exibeDados = false;
+    this.exibeAcoes = true;
   }
   
   ngOnInit(): void {  

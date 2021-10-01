@@ -1,3 +1,5 @@
+import { CriarDepartamentoComponent } from './components/departamento/criar-departamento/criar-departamento.component';
+import { CriarCentroDeCustoComponent } from './components/centro-de-custo/criar-centro-de-custo/criar-centro-de-custo.component';
 import { CriarCargoComponent } from './components/cargo/criar-cargo/criar-cargo.component';
 import { ReloadComponent } from './components/reload/reload.component';
 import { CriarUsuarioComponent } from './components/usuario/criar-usuario/criar-usuario.component';
@@ -28,10 +30,12 @@ const routes: Routes = [
 
     {path:'departamentos', component:ListarDepartamentoComponent, canActivate:[AuthGuard]},
     {path:'departamentos/:id', component: DetalheDepartamentoComponent, canActivate:[AuthGuard]},
- 
+    {path:'criar-departamento', component:CriarDepartamentoComponent, canActivate:[AuthGuard]},
+    
     {path:'centros-de-custo', component:ListarCentroDeCustoComponent, canActivate:[AuthGuard]},
     {path:'centros-de-custo/:id', component: DetalheCentroDeCustoComponent, canActivate:[AuthGuard]}, 
-
+    {path:'criar-centro-de-custo', component:CriarCentroDeCustoComponent, canActivate:[AuthGuard]},
+  
     {path:'fake-reload', component:ReloadComponent}
 ];
 

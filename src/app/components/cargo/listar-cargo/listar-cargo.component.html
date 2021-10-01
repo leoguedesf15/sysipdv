@@ -1,6 +1,7 @@
 <div class="container">
     <lista *ngIf="exibeDados" 
             [dados]=this.dados 
+            [exibeAcoes]=this.exibeAcoes
             (cliqueEdita)=editar($event) 
             (cliqueDeleta)=deletar($event)></lista>
 

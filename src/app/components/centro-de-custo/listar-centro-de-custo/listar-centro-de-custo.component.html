@@ -1,1 +1,10 @@
-<p>listar-centro-de-custo works!</p>
+<div class="container">
+    <lista *ngIf="exibeDados" 
+            [dados]=this.dados 
+            [exibeAcoes]=this.exibeAcoes
+            (cliqueEdita)=editar($event) 
+            (cliqueDeleta)=deletar($event)></lista>
+
+    <app-not-found-page *ngIf="exibe404"></app-not-found-page>        
+</div>
+<add-button (addButton)=adicionar($event) ></add-button>

@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { Router } from '@angular/router';
 import { AppComponent } from './../../../app.component';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
@@ -16,11 +17,12 @@ export class ListarUsuarioComponent implements OnInit {
   dados:Lista<Usuario>;
   exibeDados:boolean;
   exibe404:boolean;
-  
+  exibeAcoes:boolean;
   constructor(private usuarioService : UsuarioService,
               private router : Router,
-              private changeDetectorRef: ChangeDetectorRef) { 
+              private authService : AuthService) { 
     this.exibeDados = false
+    this.exibeAcoes = true;
   }
   
   ngOnInit(): void {  
@@ -41,6 +43,9 @@ export class ListarUsuarioComponent implements OnInit {
           this.exibeDados = false;
           this.exibe404 = true;
         }
+        if(errors.status ==401){
+          this.authService.autenticacaoUsuario(false);
+        }
       }
       )
       
@@ -57,7 +62,7 @@ export class ListarUsuarioComponent implements OnInit {
      )
   }
   adicionar(event){
-    this.router.navigate(['/criar-cargo'])
+    this.router.navigate(['/criar-usuario'])
   }
   getDados(){
     return this.dados;

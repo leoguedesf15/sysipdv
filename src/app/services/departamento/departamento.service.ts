@@ -15,4 +15,16 @@ export class DepartamentoService {
   getAll(){
     return this.http.get<ApiResponse<Departamento[]>>(`${this.path.get('api')}/departamento`);
   }
+  detail(id){
+    return this.http.get<ApiResponse<Departamento>>(`${this.path.get('api')}/departamento/${id}`);
+  }
+  update(id,form){    
+    return this.http.put<ApiResponse<[]>>(`${this.path.get('api')}/departamento/${id}`,JSON.parse(form));
+  }
+  save(form){    
+    return this.http.post<ApiResponse<[]>>(`${this.path.get('api')}/departamento`,form);
+  }
+  delete(id){
+    return this.http.delete<ApiResponse<Departamento>>(`${this.path.get('api')}/departamento/${id}`);
+  }
 }
