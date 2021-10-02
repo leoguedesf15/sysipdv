@@ -33,7 +33,6 @@ export class ListarCentroDeCustoComponent implements OnInit {
         headers:['Nome'],  
         data:result.data,
       }
-        console.log(this.dados)
         this.exibeDados=true;
       },
       errors=>{

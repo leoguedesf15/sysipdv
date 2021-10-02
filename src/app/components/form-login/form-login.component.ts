@@ -20,16 +20,12 @@ constructor(private authService: AuthService,
 }
   
   ngOnInit(): void {
-    // this.formulario = new FormGroup({
-    //   email : new FormControl(null),
-    //   password : new FormControl(null)
-    // });
+
     this.formulario = this.formBuilder.group({
       email : [null, [Validators.email, Validators.required]],
       password: [null,[Validators.required]],
      
     });
-    console.log(this.formulario);
   }
   formValido(){
     return this.formulario.get('email').valid && this.formulario.get("password").valid; 
@@ -39,7 +35,6 @@ constructor(private authService: AuthService,
   }
 
   submitForm(){
-    console.log(this.formulario.get('password').value);    
     this.authService
                 .login( this.formulario.get('email').value,this.formulario.get('password').value)
                 .subscribe(

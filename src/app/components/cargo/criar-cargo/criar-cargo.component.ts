@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { CargoService } from 'src/app/services/cargo/cargo.service';
 import { Cargo } from './../../../interfaces/cargo';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -18,7 +19,8 @@ export class CriarCargoComponent implements OnInit {
   constructor(private activeRoute : ActivatedRoute,
               private router : Router,
               private formBuilder : FormBuilder,
-              private cargoService : CargoService) { }
+              private cargoService : CargoService,
+              private authService : AuthService) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -33,7 +35,11 @@ export class CriarCargoComponent implements OnInit {
     this.cargoService.save(obj).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['cargos'])
-    }, error=>console.log(error));
+    }, error=>{
+      if(error.status==401){
+        this.authService.autenticacaoUsuario(false)
+      }
+    });
 
   }
 

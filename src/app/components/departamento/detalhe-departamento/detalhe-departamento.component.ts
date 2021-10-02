@@ -65,7 +65,7 @@ export class DetalheDepartamentoComponent implements OnInit {
     this.departamentoService.update(obj.id_departamento,form).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['departamentos'])
-    }, error=>console.log(error));
+    }, error=>{if(error.status == 401) this.authService.autenticacaoUsuario(false);});
 
   }
 

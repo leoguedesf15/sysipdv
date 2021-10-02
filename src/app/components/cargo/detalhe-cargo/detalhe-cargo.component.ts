@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { CargoService } from 'src/app/services/cargo/cargo.service';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
 import { Cargo } from './../../../interfaces/cargo';
@@ -19,7 +20,8 @@ export class DetalheCargoComponent implements OnInit {
   constructor(private activeRoute : ActivatedRoute,
               private router : Router,
               private formBuilder : FormBuilder,
-              private cargoService : CargoService) { }
+              private cargoService : CargoService,
+              private authService : AuthService) { }
 
   ngOnInit(): void {
     
@@ -45,7 +47,7 @@ export class DetalheCargoComponent implements OnInit {
     this.cargoService.update(obj.id_cargo,form).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['cargos'])
-    }, error=>console.log(error));
+    }, error=>{if(error.status == 401) this.authService.autenticacaoUsuario(false);});
 
   }
 

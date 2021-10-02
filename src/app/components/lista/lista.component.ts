@@ -24,15 +24,12 @@ export class ListaComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    console.log('console lista component')
     this.headers = this.dados.headers;
 
     this.keys = this.dados.keysToShow;
     this.rows = this.dados.data;
     this.pk = this.dados.dataPrimaryKey;
     
-    console.log('elementos')
-    // console.log(elements);
     this.headers = this.dados.headers;
   }
 

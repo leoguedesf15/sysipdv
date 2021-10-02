@@ -37,7 +37,6 @@ export class ListarUsuarioComponent implements OnInit {
         headers:['Nome','Email','Nascimento'],  
         data:result.data,
       }
-        console.log(this.dados)
         this.exibeDados=true;
       },
       errors=>{
@@ -54,7 +53,6 @@ export class ListarUsuarioComponent implements OnInit {
   }
 
   submitFile(target){
-      console.log(target)
       this.usuarioService.upload(target.files[0]).subscribe(result=>{
         alert(result.message)
         this.reloadComponent()

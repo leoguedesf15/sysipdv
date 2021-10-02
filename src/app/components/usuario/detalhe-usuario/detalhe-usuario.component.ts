@@ -23,7 +23,7 @@ export class DetalheUsuarioComponent implements OnInit {
               private router : Router,
               private usuarioService : UsuarioService,
               private formBuilder : FormBuilder,
-              private cargoService : CargoService) { }
+              private authService : AuthService) { }
 
   ngOnInit(): void {
     
@@ -55,7 +55,7 @@ export class DetalheUsuarioComponent implements OnInit {
     this.usuarioService.update(obj.id_usuario,form).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['usuarios'])
-    }, error=>console.log(error));
+    }, error=>{if(error.status == 401) this.authService.autenticacaoUsuario(false);});
 
   }
 

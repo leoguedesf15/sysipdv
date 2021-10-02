@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { CargoService } from './../../../services/cargo/cargo.service';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
 import { Usuario } from './../../../interfaces/usuario';
@@ -16,11 +17,10 @@ export class CriarUsuarioComponent implements OnInit {
   usuario : Usuario;
   exibeFormulario:boolean;
   exibeSenha = true;
-  constructor(private activeRoute : ActivatedRoute,
-              private router : Router,
+  constructor(private router : Router,
               private usuarioService : UsuarioService,
               private formBuilder : FormBuilder,
-              private cargoService : CargoService) { }
+              private authService : AuthService) { }
 
   ngOnInit(): void {     
     this.formulario = this.formBuilder.group({
@@ -42,7 +42,7 @@ export class CriarUsuarioComponent implements OnInit {
     this.usuarioService.save(obj).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['usuarios'])
-    }, error=>console.log(error));
+    }, error=>{if(error.status == 401) this.authService.autenticacaoUsuario(false);});
 
   }
 

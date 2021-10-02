@@ -64,7 +64,9 @@ export class DetalheCentroDeCustoComponent implements OnInit {
     this.centroCustoService.update(obj.id_centro_custo,form).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['centros-de-custo'])
-    }, error=>console.log(error));
+    }, error=>{
+      if(error.status == 401) this.authService.autenticacaoUsuario(false);
+    });
 
   }
 

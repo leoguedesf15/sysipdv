@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { CentroDeCustoService } from './../../../services/centro-de-custo/centro-de-custo.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ export class CriarCentroDeCustoComponent implements OnInit {
   centroCusto : CentroDeCusto;
   exibeFormulario:boolean;
   exibeSenha = false;
-  constructor(private activeRoute : ActivatedRoute,
+  constructor(private authService : AuthService,
               private router : Router,
               private formBuilder : FormBuilder,
               private centroCustoService : CentroDeCustoService) { }
@@ -33,7 +34,7 @@ export class CriarCentroDeCustoComponent implements OnInit {
     this.centroCustoService.save(obj).subscribe(result=>{
         alert(result.message);
         this.router.navigate(['centros-de-custo'])
-    }, error=>console.log(error));
+    }, error=>{if(error.status == 401) this.authService.autenticacaoUsuario(false);});
 
   }
 
