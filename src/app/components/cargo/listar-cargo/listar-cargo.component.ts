@@ -57,7 +57,7 @@ export class ListarCargoComponent implements OnInit {
     this.cargoService.delete(id).subscribe(result=>{
       alert('Cargo '+result.data[0].nome_cargo+' removido com sucesso!') 
       this.reloadComponent();         
-    }
+    },error=>alert(error.error.message)
      )
   }
   adicionar(event){

@@ -17,21 +17,24 @@ export class BodyTransformerInterceptor implements HttpInterceptor {
 
 
     let body = new URLSearchParams();
-    if(obj){
-      Object.keys(obj).forEach((key)=>{
-       
-          body.set(key,obj[key]);
-        
-      });
+    if(request.url.toString().indexOf('upload')==-1){
+      if(obj){
+        Object.keys(obj).forEach((key)=>{
+         
+            body.set(key,obj[key]);
+          
+        });
+      }
+  
+      const req1 = request.clone({
+        body: body.toString()
+      })   
+      
+      
+      
+      
+      return next.handle(req1);
     }
-
-    const req1 = request.clone({
-      body: body.toString()
-    })   
-    
-    
-    
-    
-    return next.handle(req1);
+    return next.handle(request);
   }
 }

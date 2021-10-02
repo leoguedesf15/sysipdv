@@ -26,4 +26,9 @@ export class UsuarioService {
   delete(id){
     return this.http.delete<ApiResponse<Usuario>>(`${this.path.get('api')}/usuario/${id}`);
   }
+  upload(file){
+    let formData = new FormData();
+    formData.append('upload', file);
+    return this.http.post<ApiResponse<[]>>(`${this.path.get('api')}/upload`, formData);
+  }
 }

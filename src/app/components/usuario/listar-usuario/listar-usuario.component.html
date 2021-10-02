@@ -4,7 +4,17 @@
             [exibeAcoes]=this.exibeAcoes
             (cliqueEdita)=editar($event) 
             (cliqueDeleta)=deletar($event)></lista>
-
+            
+           
+                <div class="file-field input-field">
+                  <div class="btn">
+                    <span>Importar usuários (.json)</span>
+                    <input type="file" (change)=submitFile($event.target)>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+           
     <app-not-found-page *ngIf="exibe404"></app-not-found-page>        
 </div>
 <add-button (addButton)=adicionar($event) ></add-button>

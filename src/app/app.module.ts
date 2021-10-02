@@ -1,3 +1,4 @@
+import { LeitorService } from './services/leitor/leitor.service';
 import { BodyTransformerInterceptor } from './interceptors/body-transformer.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { Md5 } from 'ts-md5';
@@ -67,6 +68,7 @@ import { FormDepartamentoComponent } from './components/departamento/form-depart
     
     AuthService,
     PathService,
+    LeitorService,
     Md5
   ],
   bootstrap: [AppComponent]

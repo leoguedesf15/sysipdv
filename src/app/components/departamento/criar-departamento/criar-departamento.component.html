@@ -1,1 +1,8 @@
-<p>criar-departamento works!</p>
+<div class="container">
+    <form-departamento *ngIf=this.exibeFormulario 
+                    [exibeSenha]=this.exibeSenha
+                    [formDepartamento]=this.formulario 
+                    [title]=this.title
+                    (formSubmit)=this.save($event)
+                    ></form-departamento>  
+</div>

@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth/auth-service.service';
 import { CentroDeCustoService } from './../../../services/centro-de-custo/centro-de-custo.service';
 import { CentroDeCusto } from './../../../centro-de-custo';
 import { FormGroup } from '@angular/forms';
@@ -17,12 +18,17 @@ export class FormDepartamentoComponent implements OnInit {
   @Output('formSubmit') submitEvent : EventEmitter<string>;
   @Input('exibeSenha') exibeSenha : boolean;
   centros_custo : CentroDeCusto[];
-  constructor(private centroDeCustoService : CentroDeCustoService) { 
+  constructor(private centroDeCustoService : CentroDeCustoService,
+              private authService : AuthService) { 
                 this.submitEvent = new EventEmitter<string>();                
               }
   
   ngOnInit(): void {
-    this.centroDeCustoService.getAll().subscribe(result=> this.centros_custo = result.data);
+    this.centroDeCustoService.getAll().subscribe(result=> this.centros_custo = result.data,error=>{
+      if(error.status==401){
+        this.authService.autenticacaoUsuario(false);
+      }
+    } );
   }
   formValido(){
     return this.formGroup.valid;
